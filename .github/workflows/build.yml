@@ -7,7 +7,7 @@ on:
   
 jobs:
   release:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Get latest release version tag number
@@ -28,7 +28,7 @@ jobs:
           prerelease: false
   
   build:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     needs:
       - release
