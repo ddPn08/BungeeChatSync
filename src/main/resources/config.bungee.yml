@@ -1,0 +1,10 @@
+#日本語変換を使用する
+japanese: true
+
+#Discordのチャンネルとチャットwを同期する。
+discord:
+  enable: false
+  token: ''
+  channelId: '000000000000000000'
+  consoleChannelId: '000000000000000000'
+

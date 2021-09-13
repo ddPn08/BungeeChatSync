@@ -1,0 +1,6 @@
+#Discordのチャンネルとチャットwを同期する。
+discord:
+  enable: false
+  token: ''
+  consoleChannelId: ''
+

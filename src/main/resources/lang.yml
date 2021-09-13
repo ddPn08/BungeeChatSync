@@ -1,0 +1,3 @@
+Chat: '<${prefix}${author}&r${suffix}> ${message} &b(${japanized}) &7@${server}'
+ServerJoin: '&6${player} が ${server} に参加しました。'
+Disconnect: '&e${player} がサーバーから退出しました。'
