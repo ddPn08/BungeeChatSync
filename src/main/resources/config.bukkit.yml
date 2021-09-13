@@ -1,4 +1,4 @@
-#Discordのチャンネルとチャットwを同期する。
+#Discordでコンソールの操作をする。
 discord:
   enable: false
   token: ''
