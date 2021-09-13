@@ -1,3 +1,3 @@
-# BungeeChatSync
+<h1 align="center">BungeeChatSync</h1>
 
-## BungeeCordにぶら下がっているサーバー同士でチャットを同期できます。
+<p align="center">BungeeCordにぶら下がっているサーバー同士でチャットを同期できます。</p>
