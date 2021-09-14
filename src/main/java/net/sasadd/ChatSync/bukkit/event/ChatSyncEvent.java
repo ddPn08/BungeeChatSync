@@ -1,5 +1,7 @@
 package net.sasadd.ChatSync.bukkit.event;
 
+import java.util.UUID;
+
 import org.bukkit.OfflinePlayer;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -10,16 +12,18 @@ public class ChatSyncEvent extends Event{
 
     private static final HandlerList handlers = new HandlerList();
 
-    protected OfflinePlayer author;
+    protected UUID uuid;
+    protected String name;
     protected String prefix;
     protected String suffix;
     protected String message;
     protected String japanized;
     protected String server;
 
-    public ChatSyncEvent(OfflinePlayer author, String prefix, String suffix, String message, String server, String japanized) {
+    public ChatSyncEvent(UUID uuid, String name, String prefix, String suffix, String message, String server, String japanized) {
         super();
-        this.author = author;
+        this.uuid = uuid;
+        this.name = name;
         this.prefix = prefix;
         this.suffix = suffix;
         this.message = message;
@@ -28,11 +32,15 @@ public class ChatSyncEvent extends Event{
     }
 
     public ChatSyncData getChatSyncData() {
-        return new ChatSyncData(this.author.getUniqueId(), this.message, this.japanized, this.server);
+        return new ChatSyncData(this.uuid, this.name, this.message, this.japanized, this.server);
     }
 
-    public OfflinePlayer getAuthor() {
-        return this.author;
+    public UUID getUUID() {
+        return this.uuid;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public String getPrefix(){

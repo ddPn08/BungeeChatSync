@@ -40,7 +40,7 @@ public class BungeeChatSync extends Plugin {
         this.getProxy().getPluginManager().registerListener(this, new PluginMessageListener(this));
         this.getProxy().getPluginManager().registerListener(this, new ChatSyncListener(this));
         this.getProxy().getPluginManager().registerListener(this, new PlayerDisconnectListener(this));
-        this.getProxy().getPluginManager().registerListener(this, new ServerConnectedListener(this));
+        //this.getProxy().getPluginManager().registerListener(this, new ServerConnectedListener(this));
 
         this.discordSync = new DiscordSync(this);
         logger.addAppender(new LogAppender(this));

@@ -9,6 +9,9 @@ public class ChatSyncData {
     @SerializedName("uuid")
     @Expose
     private String uuid;
+    @SerializedName("name")
+    @Expose
+    private String name;
     @SerializedName("prefix")
     @Expose
     private String prefix;
@@ -25,7 +28,8 @@ public class ChatSyncData {
     @Expose
     private String server;
 
-    public ChatSyncData(UUID uuid, String message, String japanized, String server) {
+    public ChatSyncData(UUID uuid, String name, String message, String japanized, String server) {
+        this.name = name;
         this.uuid = uuid.toString();
         this.message = message;
         this.japanized = japanized;
@@ -42,6 +46,10 @@ public class ChatSyncData {
         this.uuid = uuid.toString();
         this.message = message;
         this.japanized = "";
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public UUID getUUID() {

@@ -4,7 +4,7 @@
 
     <artifactId>BungeeChatSync</artifactId>
     <groupId>net.sasadd</groupId>
-    <version>001</version>
+    <version>002</version>
     
     <repositories>
         <repository>
@@ -24,6 +24,10 @@
             <id>dv8tion</id>
             <name>m2-dv8tion</name>
             <url>https://m2.dv8tion.net/releases</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 
@@ -60,6 +64,13 @@
             <artifactId>api</artifactId>
             <version>5.3</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.LeonMangler</groupId>
+            <artifactId>SuperVanish</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/SuperVanish-6.2.6.jar</systemPath>
+            <version>6.2.0</version>
         </dependency>
 
         <dependency>

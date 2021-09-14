@@ -34,13 +34,13 @@ public class PluginMessage implements PluginMessageListener {
 
             ByteArrayDataInput in = ByteStreams.newDataInput(message);
             String sub = in.readUTF();
-            // this.plugin.getLogger().info(sub);
+
             switch(sub){
                 case "ChatSync":{
                     final String inputData = in.readUTF();
                     final ChatSyncData data = gson.fromJson(inputData, ChatSyncData.class);
                     this.plugin.getServer().getPluginManager().callEvent(new ChatSyncEvent(
-                        this.plugin.getServer().getOfflinePlayer(data.getUUID()),data.getPrefix(),data.getSuffix(),
+                        data.getUUID(),data.getName(),data.getPrefix(),data.getSuffix(),
                         data.getMessage(), data.getServer(), data.getJapanized()));
                     break;
                 }
@@ -61,8 +61,12 @@ public class PluginMessage implements PluginMessageListener {
                                 .replace("${player}", inputData)
                         )
                     );
-
+                    break;
                 }
+
+                default:
+                    break;
+                
             }
 
         }

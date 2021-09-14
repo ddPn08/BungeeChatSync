@@ -11,7 +11,7 @@ public class ChatSyncEvent extends Event{
     protected String japanized;
     protected String server;
 
-    public ChatSyncEvent(ProxiedPlayer author,String message,String server, String japanized){
+    public ChatSyncEvent(ProxiedPlayer author, String message, String server, String japanized){
         this.author = author;
         this.message = message;
         this.japanized = japanized;
@@ -19,7 +19,7 @@ public class ChatSyncEvent extends Event{
     }
 
     public ChatSyncData getChatSyncData(){
-        return new ChatSyncData(this.author.getUniqueId(), this.message, this.japanized, this.server);
+        return new ChatSyncData(this.author.getUniqueId(),this.author.getName(), this.message, this.japanized, this.server);
     }
 
     public ProxiedPlayer getAuthor(){

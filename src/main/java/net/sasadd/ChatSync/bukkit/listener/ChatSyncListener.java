@@ -27,7 +27,7 @@ public class ChatSyncListener implements Listener{
         if (this.plugin.useLuckPerms()) {
             final LuckPerms api = LuckPermsProvider.get();
             
-            User user = api.getUserManager().loadUser(event.getAuthor().getUniqueId()).join();
+            User user = api.getUserManager().loadUser(event.getUUID()).join();
             if(user != null){
                 CachedMetaData metaData = user.getCachedData().getMetaData();
                 if(metaData.getPrefix() != null)
@@ -47,7 +47,7 @@ public class ChatSyncListener implements Listener{
                 this.plugin.getLang().getString("Chat")
                     .replace("${prefix}", prefix)
                     .replace("${suffix}", suffix)
-                    .replace("${author}", event.getAuthor().getName())
+                    .replace("${author}", event.getName())
                     .replace("${message}", event.getMessage())
                     .replace("${japanized}", event.getJapanized())
                     .replace("${server}", event.getServer()))
