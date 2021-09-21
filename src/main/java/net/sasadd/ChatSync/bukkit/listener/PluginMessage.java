@@ -7,10 +7,11 @@ import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import net.sasadd.ChatSync.ENV;
+import net.sasadd.ChatSync.ChatSync;
 import net.sasadd.ChatSync.bukkit.BungeeChatSync;
 import net.sasadd.ChatSync.bukkit.event.ChatSyncEvent;
 import net.sasadd.ChatSync.bukkit.event.ServerSwitchEvent;
+import net.sasadd.ChatSync.model.ChatLimitData;
 import net.sasadd.ChatSync.model.ChatSyncData;
 import net.sasadd.ChatSync.model.ServerSwitchData;
 
@@ -28,7 +29,7 @@ public class PluginMessage implements PluginMessageListener {
     }
 
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-        if (channel.equals(ENV.channel)) {
+        if (channel.equals(ChatSync.channel)) {
             final GsonBuilder builder = new GsonBuilder();
             final Gson gson = builder.serializeNulls().create();
 
@@ -61,6 +62,17 @@ public class PluginMessage implements PluginMessageListener {
                                 .replace("${player}", inputData)
                         )
                     );
+                    break;
+                }
+
+                case "ChatLimit":{
+                    final String inputData = in.readUTF();
+                    if(inputData.equals("disable")){
+                        this.plugin.disableChatLimit();
+                        return;
+                    }
+                    final ChatLimitData data = gson.fromJson(inputData, ChatLimitData.class);
+                    this.plugin.setChatLimitData(data);
                     break;
                 }
 

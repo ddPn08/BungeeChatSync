@@ -14,6 +14,7 @@ import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.connection.Server;
@@ -21,7 +22,7 @@ import net.md_5.bungee.api.event.PluginMessageEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.event.EventHandler;
-import net.sasadd.ChatSync.ENV;
+import net.sasadd.ChatSync.ChatSync;
 import net.sasadd.ChatSync.bungee.BungeeChatSync;
 import net.sasadd.ChatSync.bungee.event.ChatSyncEvent;
 import net.sasadd.ChatSync.model.ChatSyncData;
@@ -37,7 +38,7 @@ public class PluginMessageListener implements Listener{
 
     @EventHandler
     public void onPluginMessage(PluginMessageEvent event){
-        if(event.getTag().equals(ENV.channel)){
+        if(event.getTag().equals(ChatSync.channel)){
             DataInput input = new DataInputStream(new ByteArrayInputStream(event.getData()));
             String sub = "";
             try {
@@ -114,7 +115,7 @@ public class PluginMessageListener implements Listener{
                         out.writeUTF(gson.toJson(new ServerSwitchData(player.getName(),
                             server.getInfo().getName())));
                         
-                        s.sendData(ENV.channel, out.toByteArray());
+                        s.sendData(ChatSync.channel, out.toByteArray());
                     }
 
                     break;
@@ -141,7 +142,7 @@ public class PluginMessageListener implements Listener{
                         ByteArrayDataOutput out = ByteStreams.newDataOutput();
                         out.writeUTF("Disconnect");
                         out.writeUTF(player.getName());
-                        server.sendData(ENV.channel, out.toByteArray());
+                        server.sendData(ChatSync.channel, out.toByteArray());
                     }
 
                     break;
@@ -173,7 +174,7 @@ public class PluginMessageListener implements Listener{
                         out.writeUTF("ServerSwitch");
                         out.writeUTF(gson.toJson(new ServerSwitchData(player.getName(), server.getInfo().getName())));
 
-                        s.sendData(ENV.channel, out.toByteArray());
+                        s.sendData(ChatSync.channel, out.toByteArray());
                     }
 
                     break;

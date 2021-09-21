@@ -8,8 +8,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import de.myzelyam.api.vanish.PlayerShowEvent;
-import net.sasadd.ChatSync.ENV;
+import net.sasadd.ChatSync.ChatSync;
 import net.sasadd.ChatSync.bukkit.BungeeChatSync;
+import net.sasadd.ChatSync.bukkit.Lock.SuperVanishLocker;
 
 public class PlayerShowListener implements Listener {
 
@@ -22,12 +23,13 @@ public class PlayerShowListener implements Listener {
     @EventHandler
     public void onPlayerShow(PlayerShowEvent event){
         final Player player = event.getPlayer();
+        SuperVanishLocker.appear(player.getUniqueId());
         final ByteArrayDataOutput out = ByteStreams.newDataOutput();
 
         out.writeUTF("PlayerShow");
         out.writeUTF(player.getUniqueId().toString());
 
-        this.plugin.getServer().sendPluginMessage(this.plugin, ENV.channel, out.toByteArray());
+        this.plugin.getServer().sendPluginMessage(this.plugin, ChatSync.channel, out.toByteArray());
     }
     
 }

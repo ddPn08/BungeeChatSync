@@ -12,9 +12,8 @@ import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.ServerConnectedEvent;
 import net.md_5.bungee.api.plugin.Listener;
-import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.event.EventHandler;
-import net.sasadd.ChatSync.ENV;
+import net.sasadd.ChatSync.ChatSync;
 import net.sasadd.ChatSync.bungee.BungeeChatSync;
 import net.sasadd.ChatSync.model.ServerSwitchData;
 
@@ -50,7 +49,7 @@ public class ServerConnectedListener implements Listener{
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("ServerSwitch");
             out.writeUTF(gson.toJson(new ServerSwitchData(event.getPlayer().getName(), event.getServer().getInfo().getName())));
-            server.sendData(ENV.channel, out.toByteArray());
+            server.sendData(ChatSync.channel, out.toByteArray());
         }
     }
     

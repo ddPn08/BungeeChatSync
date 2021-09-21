@@ -15,11 +15,11 @@ import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
-import net.sasadd.ChatSync.ENV;
+import net.sasadd.ChatSync.ChatSync;
+import net.sasadd.ChatSync.bungee.command.chatsync;
 import net.sasadd.ChatSync.bungee.discord.DiscordSync;
 import net.sasadd.ChatSync.bungee.listener.ChatSyncListener;
 import net.sasadd.ChatSync.bungee.listener.PlayerDisconnectListener;
-import net.sasadd.ChatSync.bungee.listener.ServerConnectedListener;
 import net.sasadd.ChatSync.bungee.log.LogAppender;
 import net.sasadd.ChatSync.bungee.listener.PluginMessageListener;
 
@@ -35,12 +35,15 @@ public class BungeeChatSync extends Plugin {
     public void onEnable() {
         saveFiles();
 
-        this.getProxy().registerChannel(ENV.channel);
+        this.getProxy().registerChannel(ChatSync.channel);
         
         this.getProxy().getPluginManager().registerListener(this, new PluginMessageListener(this));
         this.getProxy().getPluginManager().registerListener(this, new ChatSyncListener(this));
         this.getProxy().getPluginManager().registerListener(this, new PlayerDisconnectListener(this));
         //this.getProxy().getPluginManager().registerListener(this, new ServerConnectedListener(this));
+
+
+        this.getProxy().getPluginManager().registerCommand(this, new chatsync("chatsync",this));
 
         this.discordSync = new DiscordSync(this);
         logger.addAppender(new LogAppender(this));
@@ -48,7 +51,7 @@ public class BungeeChatSync extends Plugin {
 
     @Override
     public void onDisable() {
-        this.getProxy().unregisterChannel(ENV.channel);
+        this.getProxy().unregisterChannel(ChatSync.channel);
         if(this.getDiscordSync().isEnable())
             this.getDiscordSync().disable();
     }

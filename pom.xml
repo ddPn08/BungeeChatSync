@@ -4,7 +4,7 @@
 
     <artifactId>BungeeChatSync</artifactId>
     <groupId>net.sasadd</groupId>
-    <version>002</version>
+    <version>003</version>
     
     <repositories>
         <repository>

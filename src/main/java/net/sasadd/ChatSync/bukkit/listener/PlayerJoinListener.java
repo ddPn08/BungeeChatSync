@@ -7,10 +7,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.metadata.MetadataValue;
 
 import de.myzelyam.api.vanish.VanishAPI;
-import net.sasadd.ChatSync.ENV;
+import net.sasadd.ChatSync.ChatSync;
 import net.sasadd.ChatSync.bukkit.BungeeChatSync;
 
 public class PlayerJoinListener implements Listener{
@@ -23,9 +22,11 @@ public class PlayerJoinListener implements Listener{
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
+        final Player player = event.getPlayer();
+        
         event.setJoinMessage(null);
 
-        if(VanishAPI.isInvisible(event.getPlayer()))
+        if(this.plugin.useSuperVanish() && VanishAPI.isInvisible(event.getPlayer()))
             return;
 
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
@@ -33,7 +34,7 @@ public class PlayerJoinListener implements Listener{
         out.writeUTF("PlayerJoin");
         out.writeUTF(event.getPlayer().getUniqueId().toString());
         
-        event.getPlayer().sendPluginMessage(this.plugin, ENV.channel, out.toByteArray());
+        player.sendPluginMessage(this.plugin, ChatSync.channel, out.toByteArray());
     }
     
 }

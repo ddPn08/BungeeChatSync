@@ -17,7 +17,7 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.event.EventHandler;
 
-import net.sasadd.ChatSync.ENV;
+import net.sasadd.ChatSync.ChatSync;
 import net.sasadd.ChatSync.bungee.BungeeChatSync;
 import net.sasadd.ChatSync.bungee.discord.DiscordSync;
 import net.sasadd.ChatSync.bungee.event.ChatSyncEvent;
@@ -66,7 +66,7 @@ public class ChatSyncListener implements Listener{
                     ByteArrayDataOutput out = ByteStreams.newDataOutput();
                     out.writeUTF("ChatSync");
                     out.writeUTF(gson.toJson(data));
-                    s.sendData(ENV.channel, out.toByteArray());
+                    s.sendData(ChatSync.channel, out.toByteArray());
                 }
             }
         });

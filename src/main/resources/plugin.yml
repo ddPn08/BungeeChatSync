@@ -1,5 +1,5 @@
 name: BungeeChatSync
-version: 002
+version: 003
 author: ddPn08
 softdepend: [LunaChat,LuckPerms]
 main: net.sasadd.ChatSync.bukkit.BungeeChatSync

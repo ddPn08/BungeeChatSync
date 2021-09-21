@@ -1,5 +1,8 @@
 name: BungeeChatSync
-version: 002
+version: 003
 author: ddPn08
 softdepend: [LuckPerms]
 main: net.sasadd.ChatSync.bungee.BungeeChatSync
+commands:
+  chatsync:
+    permission: BungeeChatSync.command.chatsync

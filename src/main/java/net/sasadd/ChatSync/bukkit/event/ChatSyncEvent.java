@@ -2,7 +2,6 @@ package net.sasadd.ChatSync.bukkit.event;
 
 import java.util.UUID;
 
-import org.bukkit.OfflinePlayer;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 

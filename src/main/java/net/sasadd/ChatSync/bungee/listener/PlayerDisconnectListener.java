@@ -11,7 +11,7 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.PlayerDisconnectEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
-import net.sasadd.ChatSync.ENV;
+import net.sasadd.ChatSync.ChatSync;
 import net.sasadd.ChatSync.bungee.BungeeChatSync;
 
 public class PlayerDisconnectListener implements Listener {
@@ -39,7 +39,7 @@ public class PlayerDisconnectListener implements Listener {
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("Disconnect");
             out.writeUTF(event.getPlayer().getName());
-            server.sendData(ENV.channel, out.toByteArray());
+            server.sendData(ChatSync.channel, out.toByteArray());
         }
     }
     
